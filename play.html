@@ -1,0 +1,115 @@
+﻿<html>
+  <head>
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+      word_list   = ["原子", "一部分"];
+      word_found_array = init_word_found_array(word_list);
+      
+      function click_kanji(id) {
+        clicked_kanji = document.getElementById(id);
+        
+        if (hasClass(clicked_kanji, "clicked")) {
+          return;
+        }
+        
+        clicked_kanji.className += " clicked";
+        
+        selected_paragraph = document.getElementById("selected");
+        selected_paragraph.innerHTML = selected_paragraph.innerHTML + clicked_kanji.innerHTML;
+
+      }
+      
+      function hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+      }
+      
+      function check() {
+        $('#board button').removeClass('clicked');
+        check_text = $('p#selected').text();
+        $('p#selected').text('');
+        
+
+        for (var i = 0; i < word_list.length; i++) {          
+          if (word_list[i].length == check_text.length && contains_chars(word_list[i], check_text)) {
+            $('#wordlist #w' + i).text(word_list[i]);
+            word_found_array[i] = true;
+            set_status ('found word: ' + word_list[i]);
+            break;
+          }
+        }
+        
+        if (end_condition()){
+          end_game();
+        }
+      }
+      
+      // returns true if w1 contains all w2's characters
+      function contains_chars(w1, w2) {
+        for (var i = 0; i < w2.length; i++){
+          if (w1.indexOf(w2[i]) < 0){
+            return false;
+          }
+        }
+        
+        return true;
+      }
+      
+      // returns true if the game has been won or lost
+      function end_condition() {
+        for(var i = 0; i < word_found_array.length; i++){
+          if (!word_found_array[i]){
+            return false;
+          }
+        }
+        
+        return true;
+      }
+      
+      // returns a new array with all elements set to v
+      function init_word_found_array(word_list) {
+        ret = Array(word_list.length);
+        for (var i = 0; i < word_list.length; i++){
+          ret[i] = false;
+        }
+        
+        return ret;
+      }
+      
+      function end_game() {
+        $('.control').attr('disabled', '');
+        set_status('All words found; game over');
+      }
+      
+      function set_status(text) {
+        $('#status').text(text);
+      }
+    </script>
+  </head>
+  <body>    
+    <p id="status">Game in progress</p>
+    
+    <p id="timer">-:--</p>
+    
+    <div id="board">
+      <h3>Board</h3>
+      <button id="0" onclick="click_kanji(0)" class="control">一</button>
+      <button id="1" onclick="click_kanji(1)" class="control">分</button>
+      <button id="2" onclick="click_kanji(2)" class="control">部</button>
+      <button id="3" onclick="click_kanji(3)" class="control">子</button>
+      <button id="4" onclick="click_kanji(4)" class="control">原</button>
+    </div>
+    
+    <button onclick="check()" class="control">Check</button>
+
+    <h3>Selected</h3>
+    <p id="selected"></p>
+    
+    <h3>Found</h3>
+    <ol id="wordlist">
+      <li id="w0">_ _</li>
+      <li id="w1">_ _ _</li>
+    </ol>
+    
+    <button>New Game</button>
+  </body>
+</html>
