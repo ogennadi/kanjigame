@@ -3,9 +3,10 @@
     <script src="jquery-1.7.2.js"></script>
     <script>
       $(document).ready(function() {
-        var time_left = 30;
-        var word_list   = ["原子", "一部分"];
-        var word_found_array = init_word_found_array(word_list);
+        var time_left         = 30;
+        var word_list         = ["原子", "一部分"];
+        var character_list    = ['一'  ,'分'  ,'部'  ,'子','原']
+        var word_found_array  = init_word_found_array(word_list);
         
         var timer = setInterval(function(){
           if (time_left == 0){
@@ -21,6 +22,11 @@
         setup_board(word_list);      
 
         function setup_board(list) {
+          // grid of individual kanji
+          for (var i = 0; i < character_list.length; i++){
+            $('#board').append('<button id="'+ i +'" class="control">'+ character_list[i] +'</button>');
+          }
+          
           // list of found words
           for (var i = 0; i < list.length; i++) {
             $('#wordlist').append('<li id="w'+ i +'">'+ mask_word(list[i]) +'</li>');
@@ -48,7 +54,6 @@
           
           selected_paragraph = document.getElementById("selected");
           selected_paragraph.innerHTML = selected_paragraph.innerHTML + clicked_kanji.innerHTML;
-
         }
         
         function hasClass(element, cls) {
@@ -130,11 +135,7 @@
     
     <div id="board">
       <h3>Board</h3>
-      <button id="0" class="control">一</button>
-      <button id="1" class="control">分</button>
-      <button id="2" class="control">部</button>
-      <button id="3" class="control">子</button>
-      <button id="4" class="control">原</button>
+      <!-- <button id="0" class="control">一</button> -->
     </div>
     
     <button id="check" class="control">Check</button>
@@ -144,7 +145,9 @@
     <p id="selected"></p>
     
     <h3>Found</h3>
-    <ol id="wordlist"></ol>
+    <ol id="wordlist">
+      <!-- <li id="w0">_ _</li> -->
+    </ol>
     
     <button onclick="location.reload()">New Game</button>
   </body>
