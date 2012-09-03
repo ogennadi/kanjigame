@@ -2,8 +2,9 @@
   <head>
     <script src="jquery-1.7.2.js"></script>
     <script>
-      word_list   = ["原子", "一部分"];
-      word_found_array = init_word_found_array(word_list);
+      var time_left = 5;
+      var word_list   = ["原子", "一部分"];
+      var word_found_array = init_word_found_array(word_list);
       
       function click_kanji(id) {
         clicked_kanji = document.getElementById(id);
@@ -77,12 +78,23 @@
       
       function end_game() {
         $('.control').attr('disabled', '');
-        set_status('All words found; game over');
+        set_status('Game over');
       }
       
       function set_status(text) {
         $('#status').text(text);
       }
+      
+      timer = setInterval(function(){
+        if (time_left == 0){
+          clearInterval(timer);
+          end_game();
+          return;
+        }
+        
+        time_left--;
+        $('#timer').text(time_left);
+      }, 1000);
     </script>
   </head>
   <body>    
@@ -110,6 +122,6 @@
       <li id="w1">_ _ _</li>
     </ol>
     
-    <button>New Game</button>
+    <button onclick="location.reload()">New Game</button>
   </body>
 </html>
