@@ -31,7 +31,7 @@
         
 
         for (var i = 0; i < word_list.length; i++) {          
-          if (word_list[i].length == check_text.length && contains_chars(word_list[i], check_text)) {
+          if (word_list[i].length == check_text.length && word_list[i] == check_text) {
             $('#wordlist #w' + i).text(word_list[i]);
             word_found_array[i] = true;
             set_status ('found word: ' + word_list[i]);
@@ -42,17 +42,6 @@
         if (end_condition()){
           end_game();
         }
-      }
-      
-      // returns true if w1 contains all w2's characters
-      function contains_chars(w1, w2) {
-        for (var i = 0; i < w2.length; i++){
-          if (w1.indexOf(w2[i]) < 0){
-            return false;
-          }
-        }
-        
-        return true;
       }
       
       // returns true if the game has been won or lost
