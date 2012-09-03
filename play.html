@@ -4,24 +4,27 @@
     <script>
       $(document).ready(function() {
         var time_left         = 30;
-        var word_list         = ["原子", "一部分"];
-        var character_list    = ['一'  ,'分'  ,'部'  ,'子','原']
+        var word_list         = [{'word': '原子',   'reading': 'genko',  'meaning': 'atom'},
+                                 {'word': '一部分', 'reading': 'ibubun', 'meaning': 'part'}];
+        var character_list    = ['一' ,'分' ,'部' ,'子','原']
         var word_found_array  = init_word_found_array(word_list);
-        
-        var timer = setInterval(function(){
-          if (time_left == 0){
-            stop_timer();
-            end_game();
-            return;
-          }
-          
-          time_left--;
-          $('#timer').text(time_left);
-        }, 1000);
+
         
         setup_board(word_list);      
 
         function setup_board(list) {
+          // start timer
+          var timer = setInterval(function(){
+            if (time_left == 0){
+              stop_timer();
+              end_game();
+              return;
+            }
+            
+            time_left--;
+            $('#timer').text(time_left);
+          }, 1000);
+          
           // grid of individual kanji
           for (var i = 0; i < character_list.length; i++){
             $('#board').append('<button id="'+ i +'" class="control">'+ character_list[i] +'</button>');
@@ -29,7 +32,7 @@
           
           // list of found words
           for (var i = 0; i < list.length; i++) {
-            $('#wordlist').append('<li id="w'+ i +'">'+ mask_word(list[i]) +'</li>');
+            $('#wordlist').append('<li id="w'+ i +'">'+ mask_word(list[i].word) +'</li>');
           }
           
           // kanji buttons clickable
@@ -66,10 +69,12 @@
           $('p#selected').text('');
           
           for (var i = 0; i < word_list.length; i++) {          
-            if (word_list[i].length == check_text.length && word_list[i] == check_text) {
-              $('#wordlist #w' + i).text(word_list[i]);
+            if (word_list[i].word.length == check_text.length && word_list[i].word == check_text) {
+              $('#wordlist #w' + i).text(word_list[i].word + ', ' +
+                                         word_list[i].reading + ', ' +
+                                         word_list[i].meaning);
               word_found_array[i] = true;
-              set_status ('found word: ' + word_list[i]);
+              set_status ('found word: ' + word_list[i].word);
               break;
             }
           }
@@ -123,8 +128,7 @@
           }
           
           return display.join(' ');
-        }
-      
+        }   
     });
     </script>
   </head>
