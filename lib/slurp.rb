@@ -7,7 +7,7 @@ class Slurp
       root = Nokogiri::XML(open(JMDICT_PATH))		
 
       root.xpath('//entry').each do |entry|
-        kanjis   = entry.xpath('k_ele/keb').map(&:content)
+        kanjis  = entry.xpath('k_ele/keb').map(&:content)
         reading = entry.xpath('r_ele/reb').first.content
         meaning = entry.xpath('sense').first.xpath('gloss').first.content
         pos     = entry.xpath('sense').first.xpath('pos').first.children

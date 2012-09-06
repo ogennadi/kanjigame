@@ -1,11 +1,9 @@
 ﻿<script>
   $(document).ready(function() {
     var time_left         = 30;
-    var word_list         = [{'word': '原子',   'reading': 'genko',  'meaning': 'atom'},
-                             {'word': '一部分', 'reading': 'ibubun', 'meaning': 'part'}];
-    var character_list    = ['一' ,'分' ,'部' ,'子','原']
+    var word_list         = <%= raw @word_list %>;
+    var character_list    = <%= raw @character_list %>;
     var word_found_array  = init_word_found_array(word_list);
-
     
     setup_board(word_list);      
 
