@@ -14,5 +14,7 @@
 /log/*.log
 /tmp
 *.swp
+
 JMdict.txt*
 vocabn5.htm
+/test
