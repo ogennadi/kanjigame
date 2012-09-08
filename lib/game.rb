@@ -1,4 +1,6 @@
 class Game
+  GAMES_DIR = Rails.root.join('public/games')
+
   class << self
     # Returns [a, b] where a =  list of Words made up of n characters in total,
     # and b = the n characters
@@ -22,10 +24,23 @@ class Game
       Word.where("kanji SIMILAR TO ?", '[' + chars.join('|') +']+' )
     end
 
+    # Generate a new game using N characters
     def generate(n)
       words, characters = words_with_n_chars(n)
       expanded_words = words_from(characters)
       return expanded_words.sort_by{|x| x.kanji.length}, characters
+    end
+
+    
+    def games_to_disk()
+      for i in 0..999
+        puts "========================================================"
+        puts i
+        File.open(GAMES_DIR.join("#{i}.json"), 'w') do |f|
+          wl, cl = Game.generate(16)
+          f.puts ({:word_list => wl, :character_list => cl}.to_json)
+        end
+      end
     end
   end
 end
