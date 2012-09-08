@@ -104,6 +104,7 @@
       $('.control').attr('disabled', '');
       stop_timer();
       set_status('Game over');
+      display_all_words();
     }
     
     function set_status(text) {
@@ -123,9 +124,25 @@
       }
       
       return display.join(' ');
-    }   
+    }
+
+    function display_all_words() {
+      $('#wordlist').html('');
+
+      for (var i = 0; i < word_list.length; i++) {
+        $('#wordlist').append('<li id="w'+ i +'" class="'+ (word_found_array[i] ? 'found' :  'notfound') +   '">'+ word_list[i].word + ', ' + word_list[i].reading + ', ' + word_list[i].meaning +'</li>');
+      }
+
+    }
 });
 </script>
+
+<style>
+  .notfound {
+    color: green;
+  }
+</style>
+
 
 <p id="status">Game in progress</p>
 
