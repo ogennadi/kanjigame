@@ -1,9 +1,5 @@
 class Game
   class << self
-    def random_word
-      Word.offset(rand(Word.count)).first 
-    end
-
     # Returns [a, b] where a =  list of Words made up of n characters in total,
     # and b = the n characters
     def words_with_n_chars(n)
@@ -11,7 +7,7 @@ class Game
       characters = Set.new
 
       while characters.length < n
-        rw = random_word
+        rw = Word.where(:level => 5).sample
         next if rw.kanji.length > (n - characters.length)
         words << rw
         rw.kanji.each_char {|c| characters << c}
@@ -29,7 +25,7 @@ class Game
     def generate(n)
       words, characters = words_with_n_chars(n)
       expanded_words = words_from(characters)
-      return expanded_words, characters
+      return expanded_words.sort_by{|x| x.kanji.length}, characters
     end
   end
 end
