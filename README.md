@@ -26,4 +26,8 @@ This is a Rails app so you need Ruby 1.9+ and PostgreSQL to run it.
 
   `rake game:slurpn5`
 
-- Now start your Web server and visit the home page to play
+- Generate the game static files. This takes about 15 mins
+ 
+  `rake game:generate` 
+
+- Now open the public/index.html to play
