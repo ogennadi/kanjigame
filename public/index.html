@@ -6,7 +6,7 @@
         var games_count       = 1000;
         var game_index        = Math.floor(Math.random() * games_count);
 
-        $.getJSON('/games/'+ game_index +'.json', function(data){
+        $.getJSON('games/'+ game_index +'.json', function(data){
           var word_list         = data["word_list"];
           var character_list    = data["character_list"];
           var time_left         = 59;
