@@ -2,7 +2,7 @@ require 'csv'
 
 class Slurp
   class << self
-    JMDICT_PATH = 'JMdict.txt' # ftp://ftp.monash.edu.au/pub/nihongo/JMdict.gz
+    JMDICT_PATH = 'JMdict' # ftp://ftp.monash.edu.au/pub/nihongo/JMdict.gz
     N5CSV       = 'vocabn5.csv' # based on http://www.jlptstudy.net/N5/N5_vocab-list.html
 
     # Imports the Japanese dictionary
@@ -35,8 +35,6 @@ class Slurp
 
     # Tags all level 5 words as such
     def vocabn5
-      root = Nokogiri::HTML(open(N5_PATH))
-
       CSV.foreach(N5CSV) do |row|
         kanji     = row[0]
         new_word  = init_word(kanji, :level => 5)
