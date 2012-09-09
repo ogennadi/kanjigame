@@ -23,7 +23,15 @@
       body {
         margin: 0;
       }
-            
+      
+      #selected, #check, #newgame_box, #board td {
+        font-size: 2em;
+      }
+      
+      #statusbox, #timer_box, #splash{
+        font-size: 1.1em;
+      }
+      
       h1 {
         font-size: 3em;
         margin-bottom: 0.3em;
@@ -39,7 +47,7 @@
       }
       
             
-      header {
+      header, footer {
         text-align: center;
         background-color: black;
         color: white;
@@ -60,8 +68,14 @@
       }
       
       #main {
-        width: 14em; 
+        padding-top: 2em;
+        width:20em; 
         margin: auto;
+        display: none;
+      }
+      
+      section {
+        min-height: 20em;
       }
 
       .notfound {
@@ -75,7 +89,6 @@
 
       #board td {
         border: 0.05em solid;
-        font-size: 3em;
         background-color: white;
         color: black;
         cursor: pointer;
@@ -103,14 +116,18 @@
         color: white;
       }
 
+      #board table {
+        width: 5em;
+        margin: auto;
+      }
+      
       #selected {
         width: 5em;
         height: 1em;
-        font-size: 3em;
       }
 
+      
       #check {
-        font-size: 3em;
       }
 
       #status {
@@ -118,12 +135,10 @@
       }
 
       #statusbox {
-        font-size: 1.5em;
         height: 1em;
       }
 
       #timer_box {
-        font-size: 1.5em;
         height: 1em;
       }
 
@@ -139,18 +154,21 @@
         height: 100%;
         background-color: black;
         opacity: 0.8;
+        color: white;
+        font-weight: bold;
       }
-
-      #newgame_box {
-        font-size: 1.5em;
-        height: 1.5em;
+      
+      #instructions{
+        padding-top: 2em;
+        width: 20em;
+        margin: auto;
       }
 
       #newgame {
         display: none;
       }
 
-      #timer_box, #statusbox, #newgame_box {
+      #timer_box, #statusbox, #newgame_box, #check_box, #selected_box {
         text-align: center;
       }
 
@@ -164,21 +182,28 @@
     </header>
     <section>
       <div id="splash">
-        <button id="start">Start Game</button>
+        <div id="instructions">
+          <ul>
+            <li>Find as many words as you can before the time runs out</li>
+            <li>To find a word, select characters from the grid then click 'Check'</li>
+            <li>Only words that contain at least one Kanji count</li>
+            <button id="start">Start Game</button>
+          </ul>
+        </div>
       </div>
 
       <div id="main">
-        <p id="timer_box"><span id="timer">--</span></p>
+        <p id="timer_box"><span id="timer">---</span></p>
 
         <p id="statusbox"><span id="status"></span></p>
 
         <div id="newgame_box"><button id="newgame" onclick="location.reload()">New Game</button></div>
 
         <div id="selected"></div>
-
+        
+        <p id="check_box"><button id="check" class="control">Check</button></p>
 
         <div id="board">
-          <button id="check" class="control">Check</button>
           <table>
             <tr>
               <td id="0" class="control"></td>
@@ -213,6 +238,8 @@
         </ol>
       </div>
     </section>
-    <footer></footer>
+    <footer>
+      Please send bug reports to <a href="mailto:oge@nnadi.org">oge@nnadi.org</a> or via the <a href="https://github.com/ogennadi/kanjigame">Github page</a>.
+    </footer>
   </body>
 </html>

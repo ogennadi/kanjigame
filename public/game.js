@@ -5,7 +5,7 @@
   $.getJSON('games/'+ game_index +'.json', function(data){
     var word_list         = data["word_list"];
     var character_list    = data["character_list"];
-    var time_left         = 1;
+    var time_left         = 120;
     var word_found_array  = init_word_found_array(word_list);
   
     setup_board(word_list);
@@ -33,6 +33,9 @@
 
       // unhide characters
       $('#board td').removeClass('hidden');
+      
+      // unhide #main
+      $('#main').fadeIn(500);
     });
     
     function setup_board(list) {
