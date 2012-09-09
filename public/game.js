@@ -5,11 +5,12 @@
   $.getJSON('games/'+ game_index +'.json', function(data){
     var word_list         = data["word_list"];
     var character_list    = data["character_list"];
-    var time_left         = 10;
+    var time_left         = 1;
     var word_found_array  = init_word_found_array(word_list);
-
+  
+    setup_board(word_list);
     
-    function setup_board(list) {
+    $('#start').click(function(){
       // start timer
       var timer = setInterval(function(){
         if (time_left < 0){
@@ -26,11 +27,22 @@
         time_left--;
         $('#timer').text(time_left);
       }, 1000);
-      
+       
+      // remove splash screen
+      $('#splash').fadeOut(750);
+
+      // unhide characters
+      $('#board td').removeClass('hidden');
+    });
+    
+    function setup_board(list) {
+      // hide characters
+      $('#board td').addClass('hidden');
       // grid of individual kanji
       for (var i = 0; i < character_list.length; i++){
         $('#'+i).text(character_list[i]);
       }
+      
       
       // list of found words
       for (var i = 0; i < list.length; i++) {
@@ -112,7 +124,7 @@
       $('.control').unbind('click');
 
       $('#board td').addClass('disabled');
-      $('#newgame').fadeIn(500);
+      $('#newgame').fadeIn(100);
       stop_timer();
       set_status('Game over');
 
@@ -121,11 +133,11 @@
     
     function flash_status(text) {
       set_status(text);
-      $('#status').fadeOut(1000);
+      $('#status').fadeOut(1500);
     }
 
     function set_status(text) {
-      $('#status').text(text).fadeIn(500);
+      $('#status').text(text).fadeIn(100);
     }
     
     function stop_timer() {
@@ -151,11 +163,5 @@
       }
 
     }
-    
-    $('#start').click(function(){
-      console.log('game started');
-      setup_board(word_list);      
-      $('#splash').fadeOut(750);
-    });
   });
 });

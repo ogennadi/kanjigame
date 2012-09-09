@@ -25,7 +25,7 @@
       }
 
       .notfound {
-        color: green;
+        color: grey;
       }
 
       #board table{
@@ -39,6 +39,11 @@
         background-color: white;
         color: black;
         cursor: pointer;
+      }
+
+      #board td.hidden {
+         background-color: white;
+         color: white;
       }
 
       #board td.disabled, #board td.disabled:hover {
@@ -97,6 +102,7 @@
 
       #newgame_box {
         font-size: 1.5em;
+        height: 1.5em;
       }
 
       #newgame {
@@ -109,44 +115,45 @@
     <div id="splash">
       <button id="start">Start Game</button>
     </div>
+
     <div>
-    <p id="timer_box">Time <span id="timer">--</span></p>
+      <p id="timer_box">Time <span id="timer">--</span></p>
 
-    <p id="statusbox"><span id="status">Game in progress</span></p>
+      <p id="statusbox"><span id="status">Game in progress</span></p>
 
-    <div id="newgame_box"><button id="newgame" onclick="location.reload()">New Game</button></div>
+      <div id="newgame_box"><button id="newgame" onclick="location.reload()">New Game</button></div>
 
-    <div id="selected"></div>
+      <div id="selected"></div>
 
-    <button id="check" class="control">Check</button>
+      <button id="check" class="control">Check</button>
 
-    <div id="board">
-      <table>
-        <tr>
-          <td id="0" class="control"></td>
-          <td id="1" class="control"></td>
-          <td id="2" class="control"></td>
-          <td id="3" class="control"></td>
-        </tr>
-        <tr>
-          <td id="4" class="control"></td>
-          <td id="5" class="control"></td>
-          <td id="6" class="control"></td>
-          <td id="7" class="control"></td>
-        </tr>
-        <tr>
-          <td id="8" class="control"></td>
-          <td id="9" class="control"></td>
-          <td id="10" class="control"></td>
-          <td id="11" class="control"></td>
-        </tr>
-        <tr>
-          <td id="12" class="control"></td>
-          <td id="13" class="control"></td>
-          <td id="14" class="control"></td>
-          <td id="15" class="control"></td>
-        </tr>
-      </table>
+      <div id="board">
+        <table>
+          <tr>
+            <td id="0" class="control"></td>
+            <td id="1" class="control"></td>
+            <td id="2" class="control"></td>
+            <td id="3" class="control"></td>
+          </tr>
+          <tr>
+            <td id="4" class="control"></td>
+            <td id="5" class="control"></td>
+            <td id="6" class="control"></td>
+            <td id="7" class="control"></td>
+          </tr>
+          <tr>
+            <td id="8" class="control"></td>
+            <td id="9" class="control"></td>
+            <td id="10" class="control"></td>
+            <td id="11" class="control"></td>
+          </tr>
+          <tr>
+            <td id="12" class="control"></td>
+            <td id="13" class="control"></td>
+            <td id="14" class="control"></td>
+            <td id="15" class="control"></td>
+          </tr>
+        </table>
     </div>
 
     <h3>Found</h3>
