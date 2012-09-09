@@ -20,6 +20,45 @@
     </script>
 
     <style>
+      body {
+        margin: 0;
+      }
+            
+      h1 {
+        font-size: 3em;
+        margin-bottom: 0.3em;
+      }
+      
+      h1 span {
+        color: red;
+      }
+      
+      h2 {
+        font-size: 1em;
+        margin: 0;
+      }
+      
+            
+      header {
+        text-align: center;
+        background-color: black;
+        color: white;
+      }
+
+      p {
+        margin-top: 0;
+      }
+      
+      
+      a:hover {
+        color: red;
+      }
+      
+  
+      a {
+        color: white;
+      }
+      
       #main {
         width: 14em; 
         margin: auto;
@@ -114,58 +153,66 @@
       #timer_box, #statusbox, #newgame_box {
         text-align: center;
       }
+
     </style>
     
   </head>
   <body>
-    <div id="splash">
-      <button id="start">Start Game</button>
-    </div>
+    <header>
+      <h1>K<span>o</span>ggle</h1>
+      <h2>A Kanji Word Search Game by <a href="http://oge.nnadi.org">Oge Nnadi</a></h2>
+    </header>
+    <section>
+      <div id="splash">
+        <button id="start">Start Game</button>
+      </div>
 
-    <div id="main">
-      <p id="timer_box"><span id="timer">--</span></p>
+      <div id="main">
+        <p id="timer_box"><span id="timer">--</span></p>
 
-      <p id="statusbox"><span id="status">Game in progress</span></p>
+        <p id="statusbox"><span id="status"></span></p>
 
-      <div id="newgame_box"><button id="newgame" onclick="location.reload()">New Game</button></div>
+        <div id="newgame_box"><button id="newgame" onclick="location.reload()">New Game</button></div>
 
-      <div id="selected"></div>
+        <div id="selected"></div>
 
 
-      <div id="board">
-        <button id="check" class="control">Check</button>
-        <table>
-          <tr>
-            <td id="0" class="control"></td>
-            <td id="1" class="control"></td>
-            <td id="2" class="control"></td>
-            <td id="3" class="control"></td>
-          </tr>
-          <tr>
-            <td id="4" class="control"></td>
-            <td id="5" class="control"></td>
-            <td id="6" class="control"></td>
-            <td id="7" class="control"></td>
-          </tr>
-          <tr>
-            <td id="8" class="control"></td>
-            <td id="9" class="control"></td>
-            <td id="10" class="control"></td>
-            <td id="11" class="control"></td>
-          </tr>
-          <tr>
-            <td id="12" class="control"></td>
-            <td id="13" class="control"></td>
-            <td id="14" class="control"></td>
-            <td id="15" class="control"></td>
-          </tr>
-        </table>
-    </div>
+        <div id="board">
+          <button id="check" class="control">Check</button>
+          <table>
+            <tr>
+              <td id="0" class="control"></td>
+              <td id="1" class="control"></td>
+              <td id="2" class="control"></td>
+              <td id="3" class="control"></td>
+            </tr>
+            <tr>
+              <td id="4" class="control"></td>
+              <td id="5" class="control"></td>
+              <td id="6" class="control"></td>
+              <td id="7" class="control"></td>
+            </tr>
+            <tr>
+              <td id="8" class="control"></td>
+              <td id="9" class="control"></td>
+              <td id="10" class="control"></td>
+              <td id="11" class="control"></td>
+            </tr>
+            <tr>
+              <td id="12" class="control"></td>
+              <td id="13" class="control"></td>
+              <td id="14" class="control"></td>
+              <td id="15" class="control"></td>
+            </tr>
+          </table>
+        </div>
 
-    <h3>Found</h3>
-    <ol id="wordlist">
-      <!-- <li id="w0">_ _</li> -->
-    </ol>
-    <div>
+        <h3>Found</h3>
+        <ol id="wordlist">
+          <!-- <li id="w0">_ _</li> -->
+        </ol>
+      </div>
+    </section>
+    <footer></footer>
   </body>
-  </html>
+</html>
