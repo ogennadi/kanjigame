@@ -153,7 +153,7 @@
     $('#start').click(function(){
       console.log('game started');
       setup_board(word_list);      
-//#e.preventDefault();
+      $('#splash').fadeOut(750);
     });
   });
 });

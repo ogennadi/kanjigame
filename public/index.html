@@ -20,6 +20,10 @@
     </script>
 
     <style>
+      body {
+        position: absolute;
+      }
+
       .notfound {
         color: green;
       }
@@ -83,13 +87,21 @@
 
       #splash {
         position: absolute;
+        left: 0;
+        top; 0;
         width: 100%;
         height: 100%;
+        background-color: black;
+        opacity: 0.8;
       }
     </style>
     
   </head>
   <body>
+    <div id="splash">
+      <button id="start">Start Game</button>
+    </div>
+    <div>
     <p id="timer_box">Time <span id="timer">--</span></p>
 
     <p id="statusbox"><span id="status">Game in progress</span></p>
@@ -133,9 +145,6 @@
     <ol id="wordlist">
       <!-- <li id="w0">_ _</li> -->
     </ol>
-
-    <div id="splash">
-      <button id="start">Start Game</button>
-    </div>
+    <div>
   </body>
   </html>
