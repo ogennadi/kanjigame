@@ -2,7 +2,7 @@
   var games_count       = 1000;
   var game_index        = Math.floor(Math.random() * games_count);
 
-  $.getJSON('/games/'+ game_index +'.json', function(data){
+  $.getJSON('games/'+ game_index +'.json', function(data){
     var word_list         = data["word_list"];
     var character_list    = data["character_list"];
     var time_left         = 59;
@@ -25,7 +25,7 @@
       
       // grid of individual kanji
       for (var i = 0; i < character_list.length; i++){
-        $('#board').append('<button id="'+ i +'" class="control">'+ character_list[i] +'</button>');
+        $('#'+i).text(character_list[i]);
       }
       
       // list of found words
