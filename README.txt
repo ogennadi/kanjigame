@@ -26,4 +26,4 @@ This is a Rails app so you need Ruby 1.9+ and PostgreSQL to run it.
  
     rake game:generate 
 
-- Now open the public/index.html to play
+- Now start your Web server and play!
