@@ -20,8 +20,9 @@
     </script>
 
     <style>
-      body {
-        position: absolute;
+      #main {
+        width: 14em; 
+        margin: auto;
       }
 
       .notfound {
@@ -39,6 +40,7 @@
         background-color: white;
         color: black;
         cursor: pointer;
+        padding: 0.4em 0.3em;
       }
 
       #board td.hidden {
@@ -108,6 +110,10 @@
       #newgame {
         display: none;
       }
+
+      #timer_box, #statusbox, #newgame_box {
+        text-align: center;
+      }
     </style>
     
   </head>
@@ -116,8 +122,8 @@
       <button id="start">Start Game</button>
     </div>
 
-    <div>
-      <p id="timer_box">Time <span id="timer">--</span></p>
+    <div id="main">
+      <p id="timer_box"><span id="timer">--</span></p>
 
       <p id="statusbox"><span id="status">Game in progress</span></p>
 
@@ -125,9 +131,9 @@
 
       <div id="selected"></div>
 
-      <button id="check" class="control">Check</button>
 
       <div id="board">
+        <button id="check" class="control">Check</button>
         <table>
           <tr>
             <td id="0" class="control"></td>
