@@ -34,7 +34,7 @@
       }
       
       // kanji buttons clickable
-      $('#board button').click(function(event){
+      $('#board td').click(function(event){
         click_kanji(event.target.id);
       });
     
@@ -62,7 +62,7 @@
     }
     
     function check() {
-      $('#board button').removeClass('clicked');
+      $('#board td').removeClass('clicked');
       check_text = $('p#selected').text();
       $('p#selected').text('');
       

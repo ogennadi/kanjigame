@@ -2,13 +2,6 @@
   <head>
     <title>Koggle: A Kanji Word Search Game</title>
     <meta name="description" content="Play Koggle, a word-search game&mdash;like Boggle&mdash;that uses Japanese kanji characters.">
-
-    <style>
-      .notfound {
-        color: green;
-      }
-    </style>
-    
     <script src="jquery-1.8.1.min.js"></script>
     
     <script src="game.js"></script>
@@ -25,6 +18,29 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+
+    <style>
+      .notfound {
+        color: green;
+      }
+
+      #board table{
+        border-collapse: collapse;
+        border: 0.15em solid;
+      }
+
+      #board td {
+        border: 0.05em solid;
+        font-size: 3em;
+        cursor: pointer;
+      }
+
+      td:hover {
+        background-color: black;
+        color: white;
+      }
+    </style>
+    
   </head>
   <body>
     <p id="status">Game in progress</p>
@@ -35,60 +51,28 @@
       <h3>Board</h3>
       <table>
         <tr>
-          <td>
-            <button id="0" class="control"></button>
-          </td>
-          <td>
-            <button id="1" class="control"></button>
-          </td>
-          <td>
-            <button id="2" class="control"></button>
-          </td>
-          <td>
-            <button id="3" class="control"></button>
-          </td>
+          <td id="0" class="control"> </td>
+          <td id="1" class="control"> </td>
+          <td id="2" class="control"> </td>
+          <td id="3" class="control"> </td>
         </tr>
         <tr>
-          <td>
-            <button id="4" class="control"></button>
-          </td>
-          <td>
-            <button id="5" class="control"></button>
-          </td>
-          <td>
-            <button id="6" class="control"></button>
-          </td>
-          <td>
-            <button id="7" class="control"></button>
-          </td>
+          <td id="4" class="control"> </td>
+          <td id="5" class="control"> </td>
+          <td id="6" class="control"> </td>
+          <td id="7" class="control"> </td>
         </tr>
         <tr>
-          <td>
-            <button id="8" class="control"></button>
-          </td>
-          <td>
-            <button id="9" class="control"></button>
-          </td>
-          <td>
-            <button id="10" class="control"></button>
-          </td>
-          <td>
-            <button id="11" class="control"></button>
-          </td>
+          <td id="8" class="control"> </td>
+          <td id="9" class="control"> </td>
+          <td id="10" class="control"> </td>
+          <td id="11" class="control"> </td>
         </tr>
         <tr>
-          <td>
-            <button id="12" class="control"></button>
-          </td>
-          <td>
-            <button id="13" class="control"></button>
-          </td>
-          <td>
-            <button id="14" class="control"></button>
-          </td>
-          <td>
-            <button id="15" class="control"></button>
-          </td>
+          <td id="12" class="control"> </td>
+          <td id="13" class="control"> </td>
+          <td id="14" class="control"> </td>
+          <td id="15" class="control"> </td>
         </tr>
       </table>
       <!-- <button id="0" class="control">一</button> -->
