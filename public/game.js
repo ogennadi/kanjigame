@@ -5,18 +5,22 @@
   $.getJSON('games/'+ game_index +'.json', function(data){
     var word_list         = data["word_list"];
     var character_list    = data["character_list"];
-    var time_left         = 100;
+    var time_left         = 3;
     var word_found_array  = init_word_found_array(word_list);
-    
-    setup_board(word_list);      
 
+    
     function setup_board(list) {
       // start timer
       var timer = setInterval(function(){
-        if (time_left == 0){
+        if (time_left < 0){
+          return;
+        }else if (time_left == 0){
+          time_left = -1;
           stop_timer();
           end_game();
           return;
+        }else if (time_left <= 15) {
+          $('#timer').addClass('lowtime');
         }
         
         time_left--;
@@ -72,7 +76,7 @@
                                      word_list[i].reading + ', ' +
                                      word_list[i].meaning);
           word_found_array[i] = true;
-          set_status ('found word: ' + word_list[i].word);
+          flash_status ('found word: ' + word_list[i].word + ', ' +word_list[i].reading);
           break;
         }
       }
@@ -113,9 +117,13 @@
       display_all_words();
     }
     
+    function flash_status(text) {
+      set_status(text);
+      $('#status').fadeOut(1000);
+    }
+
     function set_status(text) {
-      $('#status').text(text);
-      $('#status').fadeIn(500).fadeOut(1000);
+      $('#status').text(text).fadeIn(500);
     }
     
     function stop_timer() {
@@ -141,5 +149,11 @@
       }
 
     }
+    
+    $('#start').click(function(){
+      console.log('game started');
+      setup_board(word_list);      
+//#e.preventDefault();
+    });
   });
 });

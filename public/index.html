@@ -63,23 +63,42 @@
         font-size: 3em;
       }
 
+      #status {
+        display: none;
+      }
+
       #statusbox {
         font-size: 1.5em;
         height: 1em;
+      }
+
+      #timer_box {
+        font-size: 1.5em;
+        height: 1em;
+      }
+
+      #timer.lowtime {
+        color: red;
+      }
+
+      #splash {
+        position: absolute;
+        width: 100%;
+        height: 100%;
       }
     </style>
     
   </head>
   <body>
-    <p>Time left <span id="timer">-:--</span></p>
-
+    <p id="timer_box">Time <span id="timer">--</span></p>
 
     <p id="statusbox"><span id="status">Game in progress</span></p>
+
     <div id="selected"></div>
+
     <button id="check" class="control">Check</button>
 
     <div id="board">
-      <h3>Board</h3>
       <table>
         <tr>
           <td id="0" class="control"></td>
@@ -106,7 +125,6 @@
           <td id="15" class="control"></td>
         </tr>
       </table>
-      <!-- <button id="0" class="control">一</button> -->
     </div>
 
     <button onclick="location.reload()">New Game</button>
@@ -115,5 +133,9 @@
     <ol id="wordlist">
       <!-- <li id="w0">_ _</li> -->
     </ol>
+
+    <div id="splash">
+      <button id="start">Start Game</button>
+    </div>
   </body>
   </html>
