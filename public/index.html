@@ -94,6 +94,14 @@
         background-color: black;
         opacity: 0.8;
       }
+
+      #newgame_box {
+        font-size: 1.5em;
+      }
+
+      #newgame {
+        display: none;
+      }
     </style>
     
   </head>
@@ -105,6 +113,8 @@
     <p id="timer_box">Time <span id="timer">--</span></p>
 
     <p id="statusbox"><span id="status">Game in progress</span></p>
+
+    <div id="newgame_box"><button id="newgame" onclick="location.reload()">New Game</button></div>
 
     <div id="selected"></div>
 
@@ -138,8 +148,6 @@
         </tr>
       </table>
     </div>
-
-    <button onclick="location.reload()">New Game</button>
 
     <h3>Found</h3>
     <ol id="wordlist">

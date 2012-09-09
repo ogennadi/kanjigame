@@ -5,7 +5,7 @@
   $.getJSON('games/'+ game_index +'.json', function(data){
     var word_list         = data["word_list"];
     var character_list    = data["character_list"];
-    var time_left         = 3;
+    var time_left         = 10;
     var word_found_array  = init_word_found_array(word_list);
 
     
@@ -112,8 +112,10 @@
       $('.control').unbind('click');
 
       $('#board td').addClass('disabled');
+      $('#newgame').fadeIn(500);
       stop_timer();
       set_status('Game over');
+
       display_all_words();
     }
     
