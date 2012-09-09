@@ -32,63 +32,88 @@
       #board td {
         border: 0.05em solid;
         font-size: 3em;
+        background-color: white;
+        color: black;
         cursor: pointer;
       }
 
-      td:hover {
+      #board td.disabled, #board td.disabled:hover {
+        background-color: grey;
+        color: white;
+        cursor: default;
+      }
+
+      #board td:hover{
         background-color: black;
         color: white;
+      }
+
+      #board .clicked {
+        background-color: black;
+        color: white;
+      }
+
+      #selected {
+        width: 5em;
+        height: 1em;
+        font-size: 3em;
+      }
+
+      #check {
+        font-size: 3em;
+      }
+
+      #statusbox {
+        font-size: 1.5em;
+        height: 1em;
       }
     </style>
     
   </head>
   <body>
-    <p id="status">Game in progress</p>
-
     <p>Time left <span id="timer">-:--</span></p>
+
+
+    <p id="statusbox"><span id="status">Game in progress</span></p>
+    <div id="selected"></div>
+    <button id="check" class="control">Check</button>
 
     <div id="board">
       <h3>Board</h3>
       <table>
         <tr>
-          <td id="0" class="control"> </td>
-          <td id="1" class="control"> </td>
-          <td id="2" class="control"> </td>
-          <td id="3" class="control"> </td>
+          <td id="0" class="control"></td>
+          <td id="1" class="control"></td>
+          <td id="2" class="control"></td>
+          <td id="3" class="control"></td>
         </tr>
         <tr>
-          <td id="4" class="control"> </td>
-          <td id="5" class="control"> </td>
-          <td id="6" class="control"> </td>
-          <td id="7" class="control"> </td>
+          <td id="4" class="control"></td>
+          <td id="5" class="control"></td>
+          <td id="6" class="control"></td>
+          <td id="7" class="control"></td>
         </tr>
         <tr>
-          <td id="8" class="control"> </td>
-          <td id="9" class="control"> </td>
-          <td id="10" class="control"> </td>
-          <td id="11" class="control"> </td>
+          <td id="8" class="control"></td>
+          <td id="9" class="control"></td>
+          <td id="10" class="control"></td>
+          <td id="11" class="control"></td>
         </tr>
         <tr>
-          <td id="12" class="control"> </td>
-          <td id="13" class="control"> </td>
-          <td id="14" class="control"> </td>
-          <td id="15" class="control"> </td>
+          <td id="12" class="control"></td>
+          <td id="13" class="control"></td>
+          <td id="14" class="control"></td>
+          <td id="15" class="control"></td>
         </tr>
       </table>
       <!-- <button id="0" class="control">一</button> -->
     </div>
 
-    <button id="check" class="control">Check</button>
-
-    <h3>Selected</h3>
-
-    <p id="selected"></p>
+    <button onclick="location.reload()">New Game</button>
 
     <h3>Found</h3>
     <ol id="wordlist">
       <!-- <li id="w0">_ _</li> -->
     </ol>
-
-    <button onclick="location.reload()">New Game</button>
   </body>
   </html>

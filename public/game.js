@@ -1,11 +1,11 @@
 ﻿$(document).ready(function() {
-  var games_count       = 1000;
-  var game_index        = Math.floor(Math.random() * games_count);
+  var games_count = 1000;
+  var game_index  = Math.floor(Math.random() * games_count);
 
   $.getJSON('games/'+ game_index +'.json', function(data){
     var word_list         = data["word_list"];
     var character_list    = data["character_list"];
-    var time_left         = 59;
+    var time_left         = 100;
     var word_found_array  = init_word_found_array(word_list);
     
     setup_board(word_list);      
@@ -63,8 +63,8 @@
     
     function check() {
       $('#board td').removeClass('clicked');
-      check_text = $('p#selected').text();
-      $('p#selected').text('');
+      check_text = $('#selected').text();
+      $('#selected').text('');
       
       for (var i = 0; i < word_list.length; i++) {          
         if (word_list[i].word.length == check_text.length && word_list[i].word == check_text) {
@@ -105,6 +105,9 @@
     
     function end_game() {
       $('.control').attr('disabled', '');
+      $('.control').unbind('click');
+
+      $('#board td').addClass('disabled');
       stop_timer();
       set_status('Game over');
       display_all_words();
@@ -112,6 +115,7 @@
     
     function set_status(text) {
       $('#status').text(text);
+      $('#status').fadeIn(500).fadeOut(1000);
     }
     
     function stop_timer() {
