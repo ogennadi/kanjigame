@@ -61,6 +61,13 @@
       $('#check').click(function(){
         check();
       });
+
+      // new game button 
+      $('#newgame_box').append('<button id="newgame">New Game</button>');
+
+      $('#newgame').click(function(){
+        setTimeout('window.location.reload()',0);
+      });
     }
     
     function click_kanji(id) {
