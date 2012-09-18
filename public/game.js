@@ -97,8 +97,14 @@
           $('#wordlist #w' + i).text(word_list[i].word + ', ' +
                                      word_list[i].reading + ', ' +
                                      word_list[i].meaning);
+
+          if(word_found_array[i]){
+						flash_status ('already found: ' + word_list[i].word + ', ' +word_list[i].reading);
+          }else {
+						flash_status ('found word: ' + word_list[i].word + ', ' +word_list[i].reading);
+          }
+
           word_found_array[i] = true;
-          flash_status ('found word: ' + word_list[i].word + ', ' +word_list[i].reading);
           break;
         }
       }
