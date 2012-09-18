@@ -71,20 +71,15 @@
     }
     
     function click_kanji(id) {
-      clicked_kanji = document.getElementById(id);
+      clicked_kanji = $('#'+id);
       
-      if (hasClass(clicked_kanji, "clicked")) {
-        return;
-      }
-      
-      clicked_kanji.className += " clicked";
-      
-      selected_paragraph = document.getElementById("selected");
-      selected_paragraph.innerHTML = selected_paragraph.innerHTML + clicked_kanji.innerHTML;
-    }
-    
-    function hasClass(element, cls) {
-      return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+      if (clicked_kanji.hasClass("clicked")) {
+				clicked_kanji.removeClass("clicked");
+				$("#selected").text($("#selected").text().replace(clicked_kanji.text(), ''));
+      }else {
+				clicked_kanji.addClass("clicked");
+				$("#selected").append(clicked_kanji.text());
+			}
     }
     
     function check() {
