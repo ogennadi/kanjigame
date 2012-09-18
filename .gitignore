@@ -18,4 +18,4 @@
 JMdict.txt*
 vocabn5.htm
 /test
-/public/games
+/public/games/*.json

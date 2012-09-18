@@ -1,3 +1,6 @@
+#!ruby19
+# encoding: utf-8
+
 class Game
   GAMES_DIR = Rails.root.join('public/games')
 
@@ -21,12 +24,18 @@ class Game
     # chars : [ruby_char]
     # returns all Words formable from chars
     def words_from(chars)
-      Word.where("kanji SIMILAR TO ?", '[' + chars.join('|') +']+' )
+      words = Word.where("kanji SIMILAR TO ?", '[' + chars.join('|') +']+' ).
+				reject{|w| has_duplicate_char?(w.kanji)}
+    end
+
+    def has_duplicate_char?(string)
+      seen_before = Set.new.merge(string.chars)
+      return seen_before.length != string.length
     end
 
     # Generate a new game using N characters
     def generate(n)
-      words, characters = words_with_n_chars(n)
+			words, characters = words_with_n_chars(n)
       expanded_words = words_from(characters)
       return expanded_words.sort_by{|x| x.kanji.length}, characters
     end
