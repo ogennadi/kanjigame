@@ -94,9 +94,9 @@
                                      word_list[i].meaning);
 
           if(word_found_array[i]){
-						flash_status ('already found: ' + word_list[i].word + ', ' +word_list[i].reading);
+						set_status ('already found: ' + word_list[i].word + ', ' +word_list[i].reading);
           }else {
-						flash_status ('found word: ' + word_list[i].word + ', ' +word_list[i].reading);
+						set_status ('found word: ' + word_list[i].word + ', ' +word_list[i].reading);
           }
 
           word_found_array[i] = true;
@@ -148,7 +148,7 @@
     }
 
     function set_status(text) {
-      $('#status').text(text).fadeIn(100);
+      $('#status').text(text).hide().fadeIn(500);
     }
     
     function stop_timer() {
