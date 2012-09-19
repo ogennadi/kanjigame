@@ -95,9 +95,13 @@
                                      word_list[i].meaning);
 
           if(word_found_array[i]){
-						set_status ('already found: ' + word_list[i].word + ', ' +word_list[i].reading);
+						set_status ('already found: ' + word_list[i].word + ', ' +
+												word_list[i].reading  + ', ' +
+												word_list[i].meaning);
           }else {
-						set_status ('found word: ' + word_list[i].word + ', ' +word_list[i].reading);
+						set_status (word_list[i].word + ', ' +
+												word_list[i].reading  + ', ' +
+												word_list[i].meaning);
           }
 
           word_found_array[i] = true;
