@@ -83,6 +83,7 @@
     }
     
     function check() {
+			var word_found = false;
       $('#board td').removeClass('clicked');
       check_text = $('#selected').text();
       $('#selected').text('');
@@ -100,13 +101,19 @@
           }
 
           word_found_array[i] = true;
+					word_found = true;
+
+					if (end_condition()){
+						end_game();
+					}
+
           break;
         }
       }
-      
-      if (end_condition()){
-        end_game();
-      }
+
+			if(!word_found){
+				set_status ('word not found: ' + check_text);
+			}
     }
     
     // returns true if the game has been won or lost
@@ -148,7 +155,7 @@
     }
 
     function set_status(text) {
-      $('#status').text(text).hide().fadeIn(500);
+      $('#status').text(text).hide().fadeIn(250);
     }
     
     function stop_timer() {
